@@ -1,0 +1,17 @@
+{
+  
+    "Entitycompany": "Company",
+    "Companyone": "Amazon",
+    "Companytwo": "KPMG International",
+    "Companythree": "Walmart",
+    "Entitygeography": "Geography",
+    "Geographyone": "Delhi",
+    "Geographytwo": "United Kingdom",
+    "Geographythree": "New York",
+    "Entityrole": "Role",
+    "Roleone" : "QA Tester",
+    "Roletwo": "Web Developer",
+    "Rolethree": "Web Designer"
+
+
+}
