@@ -39,6 +39,7 @@ describe('Company composition', () => {
             companycompositionPage.setfiltersearchtxt('Wipro Ltd.');
             companycompositionPage.checkwipro();
             companycompositionPage.clickupdatebutton();
+            companycompositionPage.clickgender();
         });
 
         Cypress.config('isLoggedIn', true);
@@ -60,6 +61,55 @@ describe('Company composition', () => {
         });
 
         Cypress.config('isLoggedIn', true);
+    });
+
+    it('Verify more than 6 company validation message', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.clickcompanymenubutton();
+            dashboardPage.clicktransitionmenubutton();  
+            companycompositionPage.clickcompanyindustrybtn();
+            companycompositionPage.clickarrow();  
+            companycompositionPage.check00NATION();
+            companycompositionPage.clickupdatebutton(); 
+            companycompositionPage.clickcompanyindustrybtn();
+            companycompositionPage.setfiltersearchtxt('Wipro Ltd.');
+            companycompositionPage.checkwipro();
+            companycompositionPage.clickupdatebutton();
+            cy.contains('You can only choose up to 6 Companies/Industries at a time!').should('be.visible');
+
+        });
+
+        Cypress.config('isLoggedIn', true);
+
+    });
+
+    it('Add Gender filter for companies', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.clickcompanymenubutton();
+            dashboardPage.clicktransitionmenubutton();  
+            companycompositionPage.clickcompanyindustrybtn();
+            companycompositionPage.clickarrow();  
+            companycompositionPage.check00NATION();
+            companycompositionPage.clickupdatebutton(); 
+            companycompositionPage.clickfilter();
+            companycompositionPage.clickgender();
+            companycompositionPage.selectgender();
+            companycompositionPage.clickaddfilter();            
+
+        });
+
+        Cypress.config('isLoggedIn', true);
+
     });
 
 });
