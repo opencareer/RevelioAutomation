@@ -34,8 +34,8 @@ git clone https://github.com/IsarDeepGangwani/Traceflow.git
 
 ## 6. Cypress Dashboard
 
-   *[How to Connect to the cloud Dashboard ](https://docs.cypress.io/guides/cloud/introduction)
+   * [How to Connect to the cloud Dashboard ](https://docs.cypress.io/guides/cloud/introduction)
 
 ## 7. Cypress Mochawesome 
      
-     *[How to trigger build in HTML reports](https://www.npmjs.com/package/cypress-mochawesome-reporter)
+   * [How to trigger build in HTML reports](https://www.npmjs.com/package/cypress-mochawesome-reporter)

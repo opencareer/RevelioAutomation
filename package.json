@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "old-test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cypress run && node cypress/utility/sendReport.ts"
   },
   "author": "",
   "license": "ISC",
@@ -11,6 +12,9 @@
   "devDependencies": {
     "cypress": "^13.10.0",
     "cypress-mochawesome-reporter": "^3.8.2",
+    "mochawesome": "^7.1.3",
+    "nodemailer": "^6.9.13",
     "typescript": "^5.4.5"
   }
+  
 }

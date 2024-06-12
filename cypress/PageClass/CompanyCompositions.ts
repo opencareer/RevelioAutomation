@@ -4,7 +4,7 @@ class Companycomposition {
     private workdaybtn: string  = "button[id='1116644'] span p" ;   
     private snowflake: string = "button[id='919809'] div svg";
     private filtersearchtxt: string = "input[placeholder='Search...']"; 
-    private checkentity: string = "Wipro Ltd.";
+    private checkentity: string = ".css-7pf6at .css-2ndois";
     private updatebtn: string = "button[data-testid='filter-popover-submit']";
     private rightarrow: string = "div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > svg:nth-child(2";
     private checktechnology: string = '00NATION AS';
@@ -33,7 +33,7 @@ class Companycomposition {
 
     checkwipro(): void {
         cy.wait(2000);
-        cy.contains(this.checkentity).click();
+        cy.get(this.checkentity).click();
     }
 
     clickupdatebutton(): void {

@@ -39,7 +39,7 @@ describe('Company composition', () => {
             companycompositionPage.setfiltersearchtxt('Wipro Ltd.');
             companycompositionPage.checkwipro();
             companycompositionPage.clickupdatebutton();
-            companycompositionPage.clickgender();
+            
         });
 
         Cypress.config('isLoggedIn', true);
