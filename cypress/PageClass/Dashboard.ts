@@ -7,6 +7,9 @@ class Dashboard {
     private selectfromoption: string = "#react-select-2-option-0";
     private comanymenubtn: string = ".css-1myhmg2";
     private companycompositionbtn: string = "a[data-testid='subnav-Company-Compositions']";
+    private companytransitionbtn: string ="a[data-testid='subnav-Company-Transitions']"
+    private profilebtn: string =".css-18191l7";
+    private logoutbtn: string = 'button[id="menu-list-:r1:-menuitem-:r3:"]';
 
     
     selectentities(entityname: string): void {
@@ -39,9 +42,25 @@ class Dashboard {
         cy.get(this.comanymenubtn).click();
     }
 
-    clicktransitionmenubutton() : void {
+    clickcompositionmenubutton() : void {
         cy.get(this.companycompositionbtn).click();
         cy.wait(4000);
+    }
+
+    clicktransitionmenubutton(): void {
+        cy.get(this.companytransitionbtn).click();
+        cy.wait(4000);
+
+    }
+
+    Logout(): void {
+        cy.wait(10000);
+        cy.get(this.profilebtn).click();
+        cy.wait(2000);
+        cy.get(this.logoutbtn).click();
+        cy.clearCookies();
+        cy.clearLocalStorage();
+        cy.wait(6000);
     }
 
 

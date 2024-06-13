@@ -1,16 +1,16 @@
 /// <reference types="Cypress" />
 import Login from "../PageClass/Login";
 import Dashboard from "../PageClass/Dashboard";
-import Companycomposition from "../PageClass/CompanyCompositions";
+import Company from "../PageClass/Companyobjects";
 import '../support/commands';
 
 const loginPage = new Login();
 const dashboardPage = new Dashboard();
-const companycompositionPage = new Companycomposition();
+const companycompositionPage = new Company();
 
 describe('Company composition', () => {
 
-    it('Disable and Remove entity', () => {
+    it('Disable and Remove an entity', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
         });
@@ -18,7 +18,7 @@ describe('Company composition', () => {
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
             dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.clickcompositionmenubutton();  
             companycompositionPage.disableworkdaybtn();   
             companycompositionPage.removesnowflake(); 
         });
@@ -34,7 +34,7 @@ describe('Company composition', () => {
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
             dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.clickcompositionmenubutton();  
             companycompositionPage.clickcompanyindustrybtn();
             companycompositionPage.setfiltersearchtxt('Wipro Ltd.');
             companycompositionPage.checkwipro();
@@ -53,7 +53,7 @@ describe('Company composition', () => {
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
             dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.clickcompositionmenubutton();  
             companycompositionPage.clickcompanyindustrybtn();
             companycompositionPage.clickarrow();  
             companycompositionPage.check00NATION();
@@ -71,7 +71,7 @@ describe('Company composition', () => {
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
             dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.clickcompositionmenubutton();  
             companycompositionPage.clickcompanyindustrybtn();
             companycompositionPage.clickarrow();  
             companycompositionPage.check00NATION();
@@ -96,7 +96,7 @@ describe('Company composition', () => {
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
             dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.clickcompositionmenubutton();  
             companycompositionPage.clickcompanyindustrybtn();
             companycompositionPage.clickarrow();  
             companycompositionPage.check00NATION();
@@ -109,6 +109,26 @@ describe('Company composition', () => {
         });
 
         Cypress.config('isLoggedIn', true);
+
+    });
+
+    it('Overtime template and change the role to sales and seniority to manage', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.clickcompanymenubutton();
+            dashboardPage.clickcompositionmenubutton();  
+            companycompositionPage.clickovertime();
+            companycompositionPage.clickroledropdown();
+            companycompositionPage.selectsalefromdropdown();   
+            companycompositionPage.clicksenioritydropdown();
+            companycompositionPage.selectmanagerfromdropdown();      
+
+        });
 
     });
 

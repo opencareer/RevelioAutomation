@@ -33,16 +33,12 @@ beforeEach(() => {
     cy.visit("/");
 });
 
+import Dashboard from "../PageClass/Dashboard"; 
+const dashboardPage = new Dashboard();
 afterEach(() => {
-    // Logic to run after each test
+    // Logout the application after each test.
     if (Cypress.config('isLoggedIn')) {
-        cy.wait(10000);
-        cy.get('.css-18191l7').click();
-        cy.wait(2000);
-        cy.get('button[id="menu-list-:r1:-menuitem-:r3:"]').click();
-        cy.clearCookies();
-        cy.clearLocalStorage();
-        cy.wait(6000);
+        dashboardPage.Logout();
     }
 });
 // Alternatively you can use CommonJS syntax:

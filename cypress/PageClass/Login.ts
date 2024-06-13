@@ -10,9 +10,9 @@ class Login {
     private nametxt: string = 'input[placeholder="Name*"]';
     private companynametxt: string = 'input[placeholder="Company Name*"]';
     private jobtitletxt : string = 'input[placeholder="Job Title*"]';
-    private heardeopdown: string = 'input[placeholder="Name*"]';
+    private hearddropdown: string = 'input[placeholder="Name*"]';
     private coninuebtn: string = 'Continue';
-
+    
     clickLogin(): void {
         cy.get(this.loginbtn).click();
     }
