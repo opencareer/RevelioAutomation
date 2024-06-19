@@ -7,7 +7,8 @@ class Dashboard {
     private selectfromoption: string = "#react-select-2-option-0";
     private comanymenubtn: string = ".css-1myhmg2";
     private companycompositionbtn: string = "a[data-testid='subnav-Company-Compositions']";
-    private companytransitionbtn: string ="a[data-testid='subnav-Company-Transitions']"
+    private companytransitionbtn: string ="a[data-testid='subnav-Company-Transitions']";
+    private companyjobpostingsbtn: string = "a[data-testid='subnav-Company-Job Postings']";
     private profilebtn: string =".css-18191l7";
     private logoutbtn: string = 'button[id="menu-list-:r1:-menuitem-:r3:"]';
 
@@ -61,6 +62,11 @@ class Dashboard {
         cy.clearCookies();
         cy.clearLocalStorage();
         cy.wait(6000);
+    }
+
+    clickcompanyjobposting(): void {
+        cy.get(this.companyjobpostingsbtn).click();
+        cy.wait(4000);
     }
 
 

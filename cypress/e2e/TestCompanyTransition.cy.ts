@@ -106,6 +106,74 @@ describe('Company transition', () => {
       
     });
 
+    it('Add Gender and Education filter', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.clickcompanymenubutton();
+            dashboardPage.clicktransitionmenubutton();  
+            companytransitionPage.clickfilter();
+            companytransitionPage.clicktransitiongender();
+            companytransitionPage.selectgender();
+            companytransitionPage.clickaddfilter(); 
+            companytransitionPage.clickfilter();
+            companytransitionPage.clicktransitioneducation();
+            companytransitionPage.selecteducation();
+            companytransitionPage.clickaddfilter(); 
+            
+            
+        });
+      
+    });
+
+    it('Change transition card pagination to max and navigate to Outflow', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.clickcompanymenubutton();
+            dashboardPage.clicktransitionmenubutton();  
+            companytransitionPage.clicktransitionpaginatio();
+            companytransitionPage.selecttransitionpagination();
+            companytransitionPage.clickoutflowbtn();
+            
+            
+        });
+      
+    });
+
+    it('Navigate to outflow and change the pagination change company add one filter', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.clickcompanymenubutton();
+            dashboardPage.clicktransitionmenubutton();  
+            companytransitionPage.clickoutflowbtn();
+            companytransitionPage.clicktransitionpaginatio();
+            companytransitionPage.selecttransitionpagination();
+            companytransitionPage.clickmongoDB();
+            companytransitionPage.clickfilter();
+            companytransitionPage.clicktransitioneducation();
+            companytransitionPage.selecteducation();
+            companytransitionPage.clickaddfilter(); 
+
+            
+            
+        });
+      
+    });
+
     
 
 });

@@ -13,6 +13,7 @@ describe('Company composition', () => {
     it('Disable and Remove an entity', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
         });
 
         loginPage.clickDashboard();
@@ -23,7 +24,6 @@ describe('Company composition', () => {
             companycompositionPage.removesnowflake(); 
         });
 
-        Cypress.config('isLoggedIn', true);
     });
 
     it('Add entity via search filter', () => {
@@ -102,7 +102,7 @@ describe('Company composition', () => {
             companycompositionPage.check00NATION();
             companycompositionPage.clickupdatebutton(); 
             companycompositionPage.clickfilter();
-            companycompositionPage.clickgender();
+            companycompositionPage.clickcompositiongender();
             companycompositionPage.selectgender();
             companycompositionPage.clickaddfilter();            
 
