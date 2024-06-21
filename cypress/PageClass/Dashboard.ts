@@ -6,13 +6,25 @@ class Dashboard {
     private searchentitytxt: string = ".css-18euh9p";
     private selectfromoption: string = "#react-select-2-option-0";
     private comanymenubtn: string = ".css-1myhmg2";
+    private individual: string = ".css-1ncwpwx";
     private companycompositionbtn: string = "a[data-testid='subnav-Company-Compositions']";
     private companytransitionbtn: string ="a[data-testid='subnav-Company-Transitions']";
     private companyjobpostingsbtn: string = "a[data-testid='subnav-Company-Job Postings']";
+    private talentdiscoverybtn: string = "a[data-testid='subnav-Talent Discovery']";
     private profilebtn: string =".css-18191l7";
     private logoutbtn: string = 'button[id="menu-list-:r1:-menuitem-:r3:"]';
 
-    
+    clicktalentdiscoverybtn(): void {
+        cy.get(this.talentdiscoverybtn).click();
+        cy.wait(2000);
+    }
+
+    clickindividual(): void{
+        cy.wait(2000);
+        cy.get(this.individual).click();
+        
+    }
+
     selectentities(entityname: string): void {
         cy.wait(5000);
 
@@ -36,6 +48,7 @@ class Dashboard {
         cy.get(this.searchentitytxt).click().type(three, typeOptions);
         cy.get(this.selectfromoption).click();
         cy.contains('Continue').click();
+
     }
 
     clickcompanymenubutton() : void {
