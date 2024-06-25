@@ -14,6 +14,54 @@ class Talentdiscovery{
     private prestigeoptions: string = 'div[style="height: 72px; width: 100%;"] div[role="group"]';
     private remotesuitabilityoptions : string = 'div[style="height: 72px; width: 100%;"] div[role="group"]';
     private roleoptions: string = 'div[style="height: 168px; width: 100%;"] div[role="group"]';
+    private seniorityoptions: string = 'div[style="height: 168px; width: 100%;"] div[role="group"]';
+    private payrangedropdown: string = '.css-8atqhb';
+    private payrange: string = '.css-1a0p5sj div[role="button"]';
+    private isbetween: string = '.css-1bntj9o input';
+    private lessgreaterinput: string = '.css-1bntj9o';
+    private keywordtxt: string = '.css-10wwmqn';
+    private arrows: string = '.gutter-col .css-pet1id';
+
+    setkeyword(keyword: string[] ): void {
+
+        cy.get(this.keywordtxt).type(`${keyword} ,`);
+        cy.get('.css-1ipyiix').click();
+
+    }
+
+    selectpay(range: string, amount: number | [number, number]): void {
+        cy.get(this.payrangedropdown).click();
+        const ranges = ['is between', 'is greater than', 'is less than'];
+        const index = ranges.indexOf(range);
+    
+        if (index !== -1) {
+            cy.get(this.payrange).eq(index).click();
+            
+            if (range === 'is between') {
+                if (Array.isArray(amount) && amount.length === 2) {
+                    cy.get(this.isbetween).eq(0).type(amount[0].toString());
+                    cy.get(this.isbetween).eq(1).clear().type(amount[1].toString());
+                } else {
+                    throw new Error('For "is between" range, amount should be an array with two numbers.');
+                }
+            } else {
+                if (typeof amount === 'number') {
+                    cy.get(this.lessgreaterinput).type(amount.toString());
+                } else {
+                    throw new Error('For "is greater than" and "is less than" ranges, amount should be a single number.');
+                }
+            }
+        }
+    }
+    
+
+    selectseniority(seniority: string ): void {
+        const seniorities= ['Entry Level', 'Junior', 'Associate', 'Manager', 'Director', 'Executive', 'Senior Executive'];
+        const index = seniorities.indexOf(seniority);
+        if (index !== -1) {
+            cy.get(this.seniorityoptions).eq(index).click();
+        }
+    }
 
     selectroles(role: string): void {
         const roleIndices: { [key: string]: number } = {

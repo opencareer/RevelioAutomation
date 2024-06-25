@@ -18,8 +18,7 @@ describe('Company composition', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompositionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Compositions')
             companycompositionPage.disableworkdaybtn();   
             companycompositionPage.removesnowflake(); 
         });
@@ -29,49 +28,45 @@ describe('Company composition', () => {
     it('Add entity via search filter', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
         });
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompositionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Compositions');  
             companycompositionPage.clickcompanyindustrybtn();
             companycompositionPage.setfiltersearchtxt('Wipro Ltd.');
             companycompositionPage.checkwipro();
             companycompositionPage.clickupdatebutton();
             
-        });
-
-        Cypress.config('isLoggedIn', true);
+        });    
     });
 
     it('Add entity via dropdown', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
         });
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompositionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Compositions')
             companycompositionPage.clickcompanyindustrybtn();
             companycompositionPage.clickarrow();  
             companycompositionPage.check00NATION();
             companycompositionPage.clickupdatebutton(); 
         });
-
-        Cypress.config('isLoggedIn', true);
     });
 
     it('Verify more than 6 company validation message', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
         });
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompositionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Compositions') 
             companycompositionPage.clickcompanyindustrybtn();
             companycompositionPage.clickarrow();  
             companycompositionPage.check00NATION();
@@ -83,20 +78,17 @@ describe('Company composition', () => {
             cy.contains('You can only choose up to 6 Companies/Industries at a time!').should('be.visible');
 
         });
-
-        Cypress.config('isLoggedIn', true);
-
     });
 
     it('Add Gender filter for companies', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
         });
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompositionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Compositions')
             companycompositionPage.clickcompanyindustrybtn();
             companycompositionPage.clickarrow();  
             companycompositionPage.check00NATION();
@@ -107,9 +99,6 @@ describe('Company composition', () => {
             companycompositionPage.clickaddfilter();            
 
         });
-
-        Cypress.config('isLoggedIn', true);
-
     });
 
     it('Overtime template and change the role to sales and seniority to manage', () => {
@@ -120,8 +109,7 @@ describe('Company composition', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompositionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Compositions') 
             companycompositionPage.clickovertime();
             companycompositionPage.clickroledropdown();
             companycompositionPage.selectsalefromdropdown();   

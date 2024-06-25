@@ -6,24 +6,57 @@ class Dashboard {
     private searchentitytxt: string = ".css-18euh9p";
     private selectfromoption: string = "#react-select-2-option-0";
     private comanymenubtn: string = ".css-1myhmg2";
-    private individual: string = ".css-1ncwpwx";
+    private geographymenubtn: string = ".css-ijp080";
+    private rolemenubtn: string = ".css-tqxi9i";
+    private individualmenubtn: string = ".css-1ncwpwx";
     private companycompositionbtn: string = "a[data-testid='subnav-Company-Compositions']";
     private companytransitionbtn: string ="a[data-testid='subnav-Company-Transitions']";
     private companyjobpostingsbtn: string = "a[data-testid='subnav-Company-Job Postings']";
+    private companypaybtn: string = "a[data-testid='subnav-Company-Pay']";
+    private companysentimentbtn: string = "a[data-testid='subnav-Company-Sentiment']";
+    private companyscreener: string = "a[data-testid='subnav-Company-Screener']";
     private talentdiscoverybtn: string = "a[data-testid='subnav-Talent Discovery']";
     private profilebtn: string =".css-18191l7";
     private logoutbtn: string = 'button[id="menu-list-:r1:-menuitem-:r3:"]';
 
-    clicktalentdiscoverybtn(): void {
-        cy.get(this.talentdiscoverybtn).click();
-        cy.wait(2000);
+    navigateTo( mainMenuOptions: string , subMenuOptions: string): void {
+        
+        const mainMenuOptionsMap = {
+            'Company': this.comanymenubtn,
+            'Geography': this.geographymenubtn,
+            'Role': this.rolemenubtn,
+            'Individual' :this.individualmenubtn,
+        }
+        
+        const selectedMainMenuOptions = mainMenuOptionsMap[mainMenuOptions];
+    
+        if (selectedMainMenuOptions) {
+            cy.wait(4000);
+            cy.get(selectedMainMenuOptions).click();
+        } else {
+            throw new Error('Invalid Main menu option provided.');
+        }
+    
+        const menuOptionsMap = {
+            'Compositions': this.companycompositionbtn,
+            'Transitions': this.companytransitionbtn,
+            'Job Postings': this.companyjobpostingsbtn,
+            'Pay': this.companypaybtn,
+            'Sentiment': this.companysentimentbtn,
+            'Screener': this.companyscreener,
+            'Talent Discovery': this.talentdiscoverybtn
+        };
+    
+        const selectedSubMenuOptions = menuOptionsMap[subMenuOptions];
+    
+        if (selectedSubMenuOptions) {
+            cy.get(selectedSubMenuOptions).click();
+            cy.wait(4000);
+        } else {
+            throw new Error('Invalid Sub menu option provided.');
+        }
     }
 
-    clickindividual(): void{
-        cy.wait(2000);
-        cy.get(this.individual).click();
-        
-    }
 
     selectentities(entityname: string): void {
         cy.wait(5000);
@@ -50,23 +83,7 @@ class Dashboard {
         cy.contains('Continue').click();
 
     }
-
-    clickcompanymenubutton() : void {
-        cy.wait(2000);
-        cy.get(this.comanymenubtn).click();
-    }
-
-    clickcompositionmenubutton() : void {
-        cy.get(this.companycompositionbtn).click();
-        cy.wait(4000);
-    }
-
-    clicktransitionmenubutton(): void {
-        cy.get(this.companytransitionbtn).click();
-        cy.wait(4000);
-
-    }
-
+   
     Logout(): void {
         cy.wait(10000);
         cy.get(this.profilebtn).click();
@@ -76,13 +93,6 @@ class Dashboard {
         cy.clearLocalStorage();
         cy.wait(6000);
     }
-
-    clickcompanyjobposting(): void {
-        cy.get(this.companyjobpostingsbtn).click();
-        cy.wait(4000);
-    }
-
-
 
 }
 export default Dashboard;

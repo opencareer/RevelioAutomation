@@ -11,6 +11,7 @@ describe('Dashboard Search Engine', () => {
     it('Company search', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
         });
 
         loginPage.clickDashboard();
@@ -20,13 +21,12 @@ describe('Dashboard Search Engine', () => {
                 dashboardPage.setsearchinput(data.Companyone, data.Companytwo, data.Companythree);    
             });
         });
-
-        Cypress.config('isLoggedIn', true);
     });
 
     it('Geography search', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
         });
 
         loginPage.clickDashboard();
@@ -36,13 +36,12 @@ describe('Dashboard Search Engine', () => {
                 dashboardPage.setsearchinput(data.Geographyone, data.Geographytwo, data.Geographythree);    
             });
         });
-
-        Cypress.config('isLoggedIn', true);
     });
 
     it('Role search', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
         });
 
         loginPage.clickDashboard();
@@ -53,7 +52,6 @@ describe('Dashboard Search Engine', () => {
             });
         });
 
-        Cypress.config('isLoggedIn', true);
     });
 
 });

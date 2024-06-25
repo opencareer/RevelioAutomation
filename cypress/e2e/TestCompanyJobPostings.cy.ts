@@ -18,8 +18,7 @@ describe('Company Jobpostings', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompanyjobposting(); 
+            dashboardPage.navigateTo('Company', 'Job Postings');
             companyjobpostingsPage.clickmongoDB();
             companyjobpostingsPage.disableworkdaybtn();   
             companyjobpostingsPage.removesnowflake(); 
@@ -37,8 +36,7 @@ describe('Company Jobpostings', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompanyjobposting(); 
+            dashboardPage.navigateTo('Company', 'Job Postings');
             companyjobpostingsPage.clickmongoDB();
             companyjobpostingsPage.disableworkdaybtn();   
             companyjobpostingsPage.removesnowflake(); 
@@ -64,8 +62,7 @@ describe('Company Jobpostings', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompanyjobposting(); 
+            dashboardPage.navigateTo('Company', 'Job Postings');
             companyjobpostingsPage.clickmongoDB();
             companyjobpostingsPage.clickcompanyindustrybtn();
             companyjobpostingsPage.setfiltersearchtxt('Wipro Ltd.');
@@ -89,8 +86,7 @@ describe('Company Jobpostings', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompanyjobposting(); 
+            dashboardPage.navigateTo('Company', 'Job Postings');
             companyjobpostingsPage.disableworkdaybtn();   
             companyjobpostingsPage.removesnowflake(); 
             cy.contains('At least 1 entity must be active').should('be.visible');
@@ -108,8 +104,7 @@ describe('Company Jobpostings', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clickcompanyjobposting(); 
+            dashboardPage.navigateTo('Company', 'Job Postings'); 
             companyjobpostingsPage.clickmongoDB();
             companyjobpostingsPage.clickfileter();
             companyjobpostingsPage.clickrole();

@@ -18,8 +18,7 @@ describe('Company transition', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Transitions');
             companytransitionPage.clickmongoDB();
             companytransitionPage.removesnowflake();
             
@@ -35,8 +34,7 @@ describe('Company transition', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Transitions');  
             companytransitionPage.clickcompanyindustrybtn();
             companytransitionPage.setfiltersearchtxt('Wipro Ltd.');
             companytransitionPage.checkwipro();
@@ -54,8 +52,7 @@ describe('Company transition', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Transitions'); 
             companytransitionPage.clickcompanyindustrybtn();
             companytransitionPage.clickarrow();  
             companytransitionPage.check00NATION();
@@ -72,8 +69,7 @@ describe('Company transition', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();   
+            dashboardPage.navigateTo('Company', 'Transitions'); 
             companytransitionPage.clickcompanyindustrybtn();
             companytransitionPage.clickarrow();  
             companytransitionPage.check00NATION();
@@ -96,8 +92,7 @@ describe('Company transition', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Transitions');
             companytransitionPage.clickmongoDB();
             companytransitionPage.clickmongoDB();
             cy.contains('At least 1 entity must be active').should('be.visible');
@@ -114,8 +109,7 @@ describe('Company transition', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Transitions'); 
             companytransitionPage.clickfilter();
             companytransitionPage.clicktransitiongender();
             companytransitionPage.selectgender();
@@ -138,8 +132,7 @@ describe('Company transition', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Transitions');
             companytransitionPage.clicktransitionpaginatio();
             companytransitionPage.selecttransitionpagination();
             companytransitionPage.clickoutflowbtn();
@@ -157,8 +150,7 @@ describe('Company transition', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickcompanymenubutton();
-            dashboardPage.clicktransitionmenubutton();  
+            dashboardPage.navigateTo('Company', 'Transitions'); 
             companytransitionPage.clickoutflowbtn();
             companytransitionPage.clicktransitionpaginatio();
             companytransitionPage.selecttransitionpagination();

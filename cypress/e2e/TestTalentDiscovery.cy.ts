@@ -20,8 +20,7 @@ describe('Individual Talent Discovery', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickindividual();
-            dashboardPage.clicktalentdiscoverybtn();
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
             talentdiscoveryPage.clickfilter(); 
             talentdiscoveryPage.selectfilteroption('Company');  
             talentdiscoveryPage.setcompany();
@@ -41,8 +40,7 @@ describe('Individual Talent Discovery', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickindividual();
-            dashboardPage.clicktalentdiscoverybtn();
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
             talentdiscoveryPage.clickfilter(); 
             talentdiscoveryPage.selectfilteroption('Education');  
             talentdiscoveryPage.selecteducation('High School');
@@ -60,8 +58,7 @@ describe('Individual Talent Discovery', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickindividual();
-            dashboardPage.clicktalentdiscoverybtn();
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
             talentdiscoveryPage.clickfilter(); 
             talentdiscoveryPage.selectfilteroption('Ethnicity');  
             talentdiscoveryPage.selectethnicity('Black');
@@ -79,8 +76,7 @@ describe('Individual Talent Discovery', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickindividual();
-            dashboardPage.clicktalentdiscoverybtn();
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
             talentdiscoveryPage.clickfilter(); 
             talentdiscoveryPage.selectfilteroption('Flight Risk');  
             talentdiscoveryPage.selectflightrisk('Medium');
@@ -98,8 +94,7 @@ describe('Individual Talent Discovery', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickindividual();
-            dashboardPage.clicktalentdiscoverybtn();
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
             talentdiscoveryPage.clickfilter(); 
             talentdiscoveryPage.selectfilteroption('Gender');  
             talentdiscoveryPage.selectgender('Female');
@@ -117,8 +112,7 @@ describe('Individual Talent Discovery', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickindividual();
-            dashboardPage.clicktalentdiscoverybtn();
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
             talentdiscoveryPage.clickfilter(); 
             talentdiscoveryPage.selectfilteroption('Name');  
             talentdiscoveryPage.setname('Isar Gangwani');
@@ -136,8 +130,7 @@ describe('Individual Talent Discovery', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickindividual();
-            dashboardPage.clicktalentdiscoverybtn();
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
             talentdiscoveryPage.clickfilter(); 
             talentdiscoveryPage.selectfilteroption('Prestige');  
             talentdiscoveryPage.selectprestige('Medium');
@@ -155,8 +148,7 @@ describe('Individual Talent Discovery', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickindividual();
-            dashboardPage.clicktalentdiscoverybtn();
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
             talentdiscoveryPage.clickfilter(); 
             talentdiscoveryPage.selectfilteroption('Remote Suitability');  
             talentdiscoveryPage.selectremotesuitability('High');
@@ -174,11 +166,131 @@ describe('Individual Talent Discovery', () => {
 
         loginPage.clickDashboard();
         cy.url().should('include', '/dashboard').then(() => {    
-            dashboardPage.clickindividual();
-            dashboardPage.clicktalentdiscoverybtn();
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
             talentdiscoveryPage.clickfilter(); 
             talentdiscoveryPage.selectfilteroption('Role');  
             talentdiscoveryPage.selectroles('Engineer');
+            talentdiscoveryPage.clickaddbutton();
+            
+        });
+      
+    });
+
+    it('Search for seniority results', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
+            talentdiscoveryPage.clickfilter(); 
+            talentdiscoveryPage.selectfilteroption('Seniority');  
+            talentdiscoveryPage.selectseniority('Junior');
+            talentdiscoveryPage.selectseniority('Executive');
+            talentdiscoveryPage.clickaddbutton();
+            
+        });
+      
+    });
+
+    it('Search for Pay results', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
+            talentdiscoveryPage.clickfilter(); 
+            talentdiscoveryPage.selectfilteroption('Pay');  
+            talentdiscoveryPage.selectpay('is between', [200,500]);
+            talentdiscoveryPage.clickaddbutton();
+            
+        });
+      
+    });
+
+    it('Search for keyword results', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
+            talentdiscoveryPage.clickfilter(); 
+            talentdiscoveryPage.selectfilteroption('Keyword');  
+            talentdiscoveryPage.setkeyword(['Developer', 'Tester']);
+            talentdiscoveryPage.clickaddbutton();
+            
+        });
+      
+    });
+
+    it('Search for mulitple filter results', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
+            talentdiscoveryPage.clickfilter(); 
+            talentdiscoveryPage.selectfilteroption('Seniority');  
+            talentdiscoveryPage.selectseniority('Junior');
+            talentdiscoveryPage.selectseniority('Executive');
+            talentdiscoveryPage.clickaddbutton();
+            talentdiscoveryPage.clickfilter(); 
+            talentdiscoveryPage.selectfilteroption('Gender');  
+            talentdiscoveryPage.selectgender('Female');
+            talentdiscoveryPage.clickaddbutton();
+            talentdiscoveryPage.clickfilter(); 
+            talentdiscoveryPage.selectfilteroption('Pay');  
+            talentdiscoveryPage.selectpay('is between', [200,500]);
+            talentdiscoveryPage.clickaddbutton();
+            
+            
+        });
+      
+    });
+
+    it..only('Verify presence of tooltip on table and map view ', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
+            talentdiscoveryPage.clickfilter(); 
+            talentdiscoveryPage.selectfilteroption('Seniority');  
+            talentdiscoveryPage.selectseniority('Junior');
+            talentdiscoveryPage.selectseniority('Executive');
+            talentdiscoveryPage.clickaddbutton();
+            
+        });
+      
+    });
+
+    it..only('Verify changing manage column ', () => {
+        cy.fixture('Credentials').then((registerUserdata) => {
+            cy.login(registerUserdata.Email, registerUserdata.Password);
+            Cypress.config('isLoggedIn', true);
+        });
+
+        loginPage.clickDashboard();
+        cy.url().should('include', '/dashboard').then(() => {    
+            dashboardPage.navigateTo('Individual', 'Talent Discovery')
+            talentdiscoveryPage.clickfilter(); 
+            talentdiscoveryPage.selectfilteroption('Seniority');  
+            talentdiscoveryPage.selectseniority('Junior');
+            talentdiscoveryPage.selectseniority('Executive');
             talentdiscoveryPage.clickaddbutton();
             
         });

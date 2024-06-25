@@ -26,6 +26,7 @@ class Company {
     private jobpostingsfilteroptions: string = 'div[class=" css-c1nl7p"] div[style="opacity: 1; cursor: pointer;"]';
     private selectengineerrole: string ='.css-1e8tmsz';
     private entrylevelseniority: string = '.css-1u9ov0a';
+    
 
     clickentrylevel(): void {
         cy.get(this.entrylevelseniority).eq(0).click();
