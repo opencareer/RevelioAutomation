@@ -47,3 +47,41 @@ Cypress.Commands.add('logger', (filename, message) => {
     loginPage.clickLoginbtn();
     
 });
+
+
+Cypress.Commands.add('ensureVisible', (cardselector, text, textselector, scrollSelector, maxScroll = 600, 
+  scrollIncrement = 100, currentScroll = 0) => {
+  if (currentScroll > maxScroll) {
+      throw new Error(`${text} not found within ${maxScroll} pixels of scrolling.`);
+  }
+
+  cy.get(cardselector).find(scrollSelector).then($el => {
+      const scrollHeight = $el[0].scrollHeight;
+      const clientHeight = $el[0].clientHeight; 
+
+      if (scrollHeight > clientHeight) {
+          cy.get(cardselector).find(scrollSelector).scrollTo(0, currentScroll).then(() => {
+              cy.wait(2000);
+              cy.get(cardselector).each(($element, index, $list) => {
+                  const fetchText = $element.find(textselector).text();
+
+                  if (fetchText.includes(text)) {
+                      cy.wrap($element).contains(text).click();
+                  } else {
+                      cy.ensureVisible(cardselector, text, textselector, scrollSelector, maxScroll, scrollIncrement, currentScroll + scrollIncrement);
+                  }
+              });
+          });
+      } else {
+          cy.wait(2000);
+          cy.get(cardselector).each(($element, index, $list) => {
+              const fetchText = $element.find(textselector).text();
+
+              if (fetchText.includes(text)) {
+                  cy.wrap($element).contains(text).click();
+              }
+          });
+      }
+  });
+});
+

@@ -259,7 +259,7 @@ describe('Individual Talent Discovery', () => {
       
     });
 
-    it..only('Verify presence of tooltip on table and map view ', () => {
+    it('Verify presence of tooltip on table and map view ', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
             Cypress.config('isLoggedIn', true);
@@ -273,12 +273,16 @@ describe('Individual Talent Discovery', () => {
             talentdiscoveryPage.selectseniority('Junior');
             talentdiscoveryPage.selectseniority('Executive');
             talentdiscoveryPage.clickaddbutton();
+            talentdiscoveryPage.clickarrow('Right');
+            talentdiscoveryPage.Hover();
+            //cy.get('.InovuaReactDataGrid__row--first div').should('have.attr', 'aria-expanded="True"');
+
             
         });
       
     });
 
-    it..only('Verify changing manage column ', () => {
+    it('Verify changing manage column ', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
             Cypress.config('isLoggedIn', true);
@@ -292,6 +296,10 @@ describe('Individual Talent Discovery', () => {
             talentdiscoveryPage.selectseniority('Junior');
             talentdiscoveryPage.selectseniority('Executive');
             talentdiscoveryPage.clickaddbutton();
+            talentdiscoveryPage.clickarrow('Right');
+            talentdiscoveryPage.clickmanagecolumn();
+            talentdiscoveryPage.checkcolumns(['Gender', 'Start Date', 'End Date']);
+            talentdiscoveryPage.clicksave();
             
         });
       

@@ -21,6 +21,40 @@ class Talentdiscovery{
     private lessgreaterinput: string = '.css-1bntj9o';
     private keywordtxt: string = '.css-10wwmqn';
     private arrows: string = '.gutter-col .css-pet1id';
+    private hoverfirstrow: string = '.InovuaReactDataGrid__row--first';
+    private Managecolumnbtn: string = 'button[aria-label="Manage Columns"]';
+    private selectcolumnoptions: string = '.css-988d0d label';
+    private savebtn = 'button[type="submit"]';
+
+    clicksave(): void {
+        cy.get(this.savebtn).click()
+    }
+
+    checkcolumns(options: string[]): void {
+        options.forEach(option => {
+            cy.get(this.selectcolumnoptions).contains(option).click();
+        });
+    }
+
+    clickmanagecolumn(): void {
+        cy.get(this.Managecolumnbtn).click();
+    }
+
+    Hover(): void {
+        cy.get(this.hoverfirstrow).trigger('mouseover')
+    }
+
+    clickarrow( direction : string ): void {
+        cy.wait(5000);
+        if (direction === 'Left')
+            {
+                cy.get(this.arrows).eq(0).click();
+            }
+            else if (direction === 'Right') {
+                cy.get(this.arrows).eq(1).click();
+            }
+            
+    }
 
     setkeyword(keyword: string[] ): void {
 

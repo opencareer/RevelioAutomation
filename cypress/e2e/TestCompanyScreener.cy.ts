@@ -112,7 +112,7 @@ describe('Company screener', () => {
         });
     });
 
-    it.only('Search for multiple filter results', () => {
+    it('Search for multiple filter results', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
             Cypress.config('isLoggedIn', true);

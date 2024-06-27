@@ -20,7 +20,7 @@ async function sendEmail(delayMilliseconds) {
   // Define email options
   let mailOptions = {
     from: 'reveliolabsqa@gmail.com',
-    to: 'patrick@reveliolabs.com', // Stakeholder's email address
+    to: 'patrick@reveliolabs.com,reveliolabsqa@gmail.com ', // Stakeholder's email address
     subject: 'See the attached HTML file.',
     html: reportContent,
     attachments: [
