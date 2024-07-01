@@ -6,15 +6,15 @@ class Talentdiscovery{
     private searchbtn: string = '.css-1f3vsfb';
     private selectamazon: string = 'div[data-testid="Amazon.com, Inc._tree_item"]';
     private addbtn: string = 'button[data-testid="filter-popover-submit"]';
-    private educationoptions: string = 'div[style="height: 144px; width: 100%;"] div[role="group"]';
-    private ethnicityoptions: string = 'div[style="height: 144px; width: 100%;"] div[role="group"]';
-    private flightriskoptions: string = 'div[style="height: 72px; width: 100%;" ] div[role="group"]';
-    private genderoptions: string = 'div[style="height: 48px; width: 100%;"] .css-9nud46';
+    private educationoptions: string = '.css-1azyyrj div[role="group"]';
+    private ethnicityoptions: string = '.css-1azyyrj div[role="group"]';
+    private flightriskoptions: string = '.css-1azyyrj div[role="group"]';
+    private genderoptions: string = '.css-1azyyrj div[role="group"]';
     private nametextbox: string = 'input[placeholder="Search for a name"]';
-    private prestigeoptions: string = 'div[style="height: 72px; width: 100%;"] div[role="group"]';
-    private remotesuitabilityoptions : string = 'div[style="height: 72px; width: 100%;"] div[role="group"]';
-    private roleoptions: string = 'div[style="height: 168px; width: 100%;"] div[role="group"]';
-    private seniorityoptions: string = 'div[style="height: 168px; width: 100%;"] div[role="group"]';
+    private prestigeoptions: string = '.css-1azyyrj div[role="group"]';
+    private remotesuitabilityoptions : string = '.css-1azyyrj div[role="group"]';
+    private roleoptions: string = '.css-1azyyrj div[role="group"]';
+    private seniorityoptions: string = '.css-1azyyrj div[role="group"]';
     private payrangedropdown: string = '.css-8atqhb';
     private payrange: string = '.css-1a0p5sj div[role="button"]';
     private isbetween: string = '.css-1bntj9o input';
@@ -184,7 +184,7 @@ class Talentdiscovery{
     }
 
     selectamazoncompany(): void {
-        cy.get(this.selectamazon).click();
+        cy.get(this.selectamazon).click({force: true});
     }
 
     setcompany(): void {

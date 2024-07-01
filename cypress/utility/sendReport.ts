@@ -3,6 +3,18 @@ const fs = require('fs');
 const path = require('path');
 
 async function sendEmail(delayMilliseconds) {
+  // Wait for the specified delay (5 seconds)
+  await new Promise(resolve => setTimeout(resolve, delayMilliseconds));
+
+  // Read the HTML report file
+  const reportPath = path.join(__dirname, '../reports/html/index.html');
+  if (!fs.existsSync(reportPath)) {
+    console.error('Report file not found at path:', reportPath);
+    return;
+  }
+
+  const reportContent = fs.readFileSync(reportPath, { encoding: 'utf-8' });
+
   // Create a transporter object
   let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -12,15 +24,10 @@ async function sendEmail(delayMilliseconds) {
     }
   });
 
-  // Read the HTML report file
-  const reportPath = path.join(__dirname, '../reports/html/index.html');
-  const reportContent = fs.readFileSync(reportPath, { encoding: 'utf-8' });
-  
-
   // Define email options
   let mailOptions = {
     from: 'reveliolabsqa@gmail.com',
-    to: 'patrick@reveliolabs.com,reveliolabsqa@gmail.com ', // Stakeholder's email address
+    to: 'patrick@reveliolabs.com, reveliolabsqa@gmail.com', // Stakeholder's email address
     subject: 'See the attached HTML file.',
     html: reportContent,
     attachments: [
@@ -32,10 +39,6 @@ async function sendEmail(delayMilliseconds) {
     ],
   };
 
-  // Wait for the specified delay (3 seconds)
-  await new Promise(resolve => setTimeout(resolve, delayMilliseconds));
-
-
   // Send the email
   try {
     let info = await transporter.sendMail(mailOptions);
@@ -45,4 +48,5 @@ async function sendEmail(delayMilliseconds) {
   }
 }
 
-sendEmail(3000);
+sendEmail(3000); // 3-second delay
+

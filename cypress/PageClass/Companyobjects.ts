@@ -5,7 +5,7 @@ class Company {
     private snowflake: string = "button[id='919809'] div svg";
     private mongoDB: string = "button[id='1005273'] span ";
     private filtersearchtxt: string = "input[placeholder='Search...']"; 
-    private checkentity: string = 'div[style="height: 48px; width: 100%;"] div[data-testid="selection-tree-data-node"]';
+    private checkentity: string = '.css-1azyyrj .css-1u9ov0a';
     private updatebtn: string = "button[data-testid='filter-popover-submit']";
     private rightarrow: string = "div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > svg:nth-child(2";
     private checktechnology: string = '00NATION AS';
@@ -79,12 +79,8 @@ class Company {
     setfiltersearchtxt( entity: string ): void {
         const typeOptions = { delay: 300 };
         cy.get(this.filtersearchtxt).type(entity, typeOptions);
+        cy.get(this.checkentity).contains(entity).click();
 
-    }
-
-    checkwipro(): void {
-        cy.wait(2000);
-        cy.get(this.checkentity).eq(1).click();
     }
 
     clickupdatebutton(): void {

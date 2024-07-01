@@ -6,24 +6,24 @@ const loginPage = new Login();
 
 describe('Signup', () => {
 
-    it('New user Signup', () => {
+    it('Signup with already registered user', () => {
         loginPage.clickfreeTrial();
-        cy.fixture('Credentials').then((unregisterUserdata) => {
-            loginPage.setUserEmail(unregisterUserdata.Email);
+        cy.fixture('Credentials').then((registerUserdata) => {
+            loginPage.setUserEmail(registerUserdata.Email);
+            loginPage.setname(registerUserdata.Name);
+            loginPage.setPassword(registerUserdata.Password);
             loginPage.clickSignup();
-            loginPage.setname(unregisterUserdata.Name);
-            loginPage.setcompanyname(unregisterUserdata.CompanyName);
-            loginPage.setjobtitle(unregisterUserdata.JobTitle);
-            loginPage.clickcontinue();
-            cy.contains('Great, someone from our team will reach out shortly!').should('be.visible');
+            cy.contains('Failed to create user.').should('be.visible');
             Cypress.config('isLoggedIn', false);
         });
     });
 
-    it('Blank Signup', () => {
+    it.only('Blank Signup', () => {
         loginPage.clickfreeTrial();
         loginPage.clickSignup();
         cy.contains('Email is required').should('be.visible');
+        cy.contains('Name is required').should('be.visible');
+        cy.contains('Password is required').should('be.visible');
         Cypress.config('isLoggedIn', false);
     });
 

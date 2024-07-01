@@ -28,7 +28,7 @@ describe('Company Jobpostings', () => {
       
     });
 
-    it('Add entity via search filter and dropdown', () => {
+    it.('Add entity via search filter and dropdown', () => {
         cy.fixture('Credentials').then((registerUserdata) => {
             cy.login(registerUserdata.Email, registerUserdata.Password);
             Cypress.config('isLoggedIn', true);
@@ -42,7 +42,6 @@ describe('Company Jobpostings', () => {
             companyjobpostingsPage.removesnowflake(); 
             companyjobpostingsPage.clickcompanyindustrybtn();
             companyjobpostingsPage.setfiltersearchtxt('Wipro Ltd.');
-            companyjobpostingsPage.checkwipro();
             companyjobpostingsPage.clickupdatebutton();
             companyjobpostingsPage.clickcompanyindustrybtn();
             companyjobpostingsPage.clickarrow();  
@@ -66,7 +65,6 @@ describe('Company Jobpostings', () => {
             companyjobpostingsPage.clickmongoDB();
             companyjobpostingsPage.clickcompanyindustrybtn();
             companyjobpostingsPage.setfiltersearchtxt('Wipro Ltd.');
-            companyjobpostingsPage.checkwipro();
             companyjobpostingsPage.clickupdatebutton();
             companyjobpostingsPage.clickcompanyindustrybtn();
             companyjobpostingsPage.clickarrow();  

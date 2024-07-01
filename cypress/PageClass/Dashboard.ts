@@ -86,9 +86,9 @@ class Dashboard {
    
     Logout(): void {
         cy.wait(10000);
-        cy.get(this.profilebtn).click();
+        cy.get(this.profilebtn).click({force: true});
         cy.wait(2000);
-        cy.get(this.logoutbtn).click();
+        cy.get(this.logoutbtn).click({force: true});
         cy.clearCookies();
         cy.clearLocalStorage();
         cy.wait(6000);

@@ -37,7 +37,6 @@ describe('Company transition', () => {
             dashboardPage.navigateTo('Company', 'Transitions');  
             companytransitionPage.clickcompanyindustrybtn();
             companytransitionPage.setfiltersearchtxt('Wipro Ltd.');
-            companytransitionPage.checkwipro();
             companytransitionPage.clickupdatebutton();
             
         });
@@ -76,7 +75,6 @@ describe('Company transition', () => {
             companytransitionPage.clickupdatebutton(); 
             companytransitionPage.clickcompanyindustrybtn();
             companytransitionPage.setfiltersearchtxt('Wipro Ltd.');
-            companytransitionPage.checkwipro();
             companytransitionPage.clickupdatebutton();
             cy.contains('You can only choose up to 6 Companies/Industries at a time!').should('be.visible');
 

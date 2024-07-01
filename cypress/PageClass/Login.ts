@@ -7,10 +7,9 @@ class Login {
     private dashboardbtn: string = '.flex.items-center.justify-end a[href="https://dashboard.reveliolabs.com"]';
     private freetrialbtn: string = 'Free Trial';
     private signupbtn: string = "button[type='submit']";
-    private nametxt: string = 'input[placeholder="Name*"]';
+    private nametxt: string = 'input[placeholder="First and last name"';
     private companynametxt: string = 'input[placeholder="Company Name*"]';
     private jobtitletxt : string = 'input[placeholder="Job Title*"]';
-    private hearddropdown: string = 'input[placeholder="Name*"]';
     private coninuebtn: string = 'Continue';
     
     clickLogin(): void {
@@ -44,16 +43,6 @@ class Login {
     setname(name: string): void {
         cy.get(this.nametxt).click().type(name);
     }
-    setcompanyname(companyname: string): void {
-        cy.get(this.companynametxt).click().type(companyname);
-    }
-    setjobtitle(jobtitle: string): void {
-        cy.get(this.jobtitletxt).click().type(jobtitle);
-    }
-    clickcontinue(): void{
-        cy.contains(this.coninuebtn).click();
-    }
-
 
 }
 

@@ -36,7 +36,6 @@ describe('Company composition', () => {
             dashboardPage.navigateTo('Company', 'Compositions');  
             companycompositionPage.clickcompanyindustrybtn();
             companycompositionPage.setfiltersearchtxt('Wipro Ltd.');
-            companycompositionPage.checkwipro();
             companycompositionPage.clickupdatebutton();
             
         });    
@@ -73,7 +72,6 @@ describe('Company composition', () => {
             companycompositionPage.clickupdatebutton(); 
             companycompositionPage.clickcompanyindustrybtn();
             companycompositionPage.setfiltersearchtxt('Wipro Ltd.');
-            companycompositionPage.checkwipro();
             companycompositionPage.clickupdatebutton();
             cy.contains('You can only choose up to 6 Companies/Industries at a time!').should('be.visible');
 
